@@ -18,6 +18,7 @@ class LinkedList:
         temp.next = new_node
 
     def create_cycle(self, pos):
+        """Create a cycle in the linked list at the given position (0-indexed)."""
         if pos == -1:
             return 
         cycle_node = None
@@ -33,8 +34,8 @@ class LinkedList:
         if last and cycle_node:
             last.next = cycle_node 
 
-
 def is_cycle_found(head):
+    """Detects if a cycle exists in the linked list using Floyd's cycle-finding algorithm."""
     slow = fast = head
     while fast and fast.next:
         slow = slow.next
@@ -48,9 +49,10 @@ if __name__ == "__main__":
     for val in [1, 2, 5, -4]:
         ll.append(val)
 
-    ll.is_cycle_found(1) 
+    # Uncomment the next line if you want to create a cycle at index 1
+    ll.create_cycle(1)
 
-    if has_cycle(ll.head):
+    if is_cycle_found(ll.head):
         print("Cycle detected")
     else:
         print("No cycle detected")
